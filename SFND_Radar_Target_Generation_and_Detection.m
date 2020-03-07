@@ -96,7 +96,7 @@ Mix1D=reshape(Mix,[Nr,Nd]);
  % *%TODO* :
 %run the FFT on the beat signal along the range bins dimension (Nr) and
 %normalize.
-signal_fft = fft(Mix1D);
+signal_fft = fft(Mix1D, Nr, 1);
 
  % *%TODO* :
 % Take the absolute value of FFT output
@@ -105,7 +105,7 @@ signal_fft = abs(signal_fft/Nr);
  % *%TODO* :
 % Output of FFT is double sided signal, but we are interested in only one side of the spectrum.
 % Hence we throw out half of the samples.
-signal_fft = signal_fft(1:Nr/2 + 1);
+signal_fft = signal_fft(1:Nr/2 - 1);
 
 %plotting the range
 % figure ('Name','Range from First FFT')
