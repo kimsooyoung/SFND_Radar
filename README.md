@@ -14,14 +14,19 @@
 
 ### 1. Implementation steps for the 2D CFAR process
 
-The 2D constant false alarm rate (CFAR), when applied to the results of the 2D FFT, uses a dynamic threshold set by the noise level in the vicinity of the cell under test (CUT). The key steps are as follows:
-- Loop over all cells in the range and doppler dimensions, starting and ending at indices which leave appropriate margins
-- Slice the training cells (and exclude the guard cells) surrounding the CUT
-- Convert the training cell values from decibels (dB) to power, to linearize
-- Find the mean noise level among the training cells
-- Convert this average value back from power to dB
-- Add the offset (in dB) to set the dynamic threshold
-- Apply the threshold and store the result in a binary array of the same dimensions as the range doppler map (RDM)
+The false alarm issue can be resolved by implementing the constant false alarm rate. CFAR varies the detection threshold based on the vehicle surroundings. The CFAR technique estimates the level of interference in radar range and doppler cells “Training Cells” on either or both the side of the “Cell Under Test”. The estimate is then used to decide if the target is in the Cell Under Test (CUT).
+
+Here's the steps for CFAR algorithm
+
+<img width="814" alt="2d CFAR" src="https://user-images.githubusercontent.com/12381733/76136968-f02d5200-607a-11ea-8f38-77ee15438610.png">
+
+1. Define CFAR Block such as picture above
+2. Loop over all cells in the range and doppler dimensions, starting and ending at indices which leave appropriate margins 
+3. Apply summation to all the values in the training cell position (Since the unit of RDM value (dB) doesn't allow ordinary summation, Convert the training cell values from decibels (dB) to power by using `db2pow` function)
+4. Calculate the mean noise level among the training cells
+5. Convert the result of average again by using `pow2db` function. And then, add the offset to set the dynamic threshold
+6. Apply those threshold to every RDM values. Ignore values those smaller than threshold.
+7. Store those compared values in a binary array of the same dimensions as RDM
 
 ```
 for i=Tw+Gw+1:width-Tw-Gw
@@ -51,9 +56,16 @@ for i=Tw+Gw+1:width-Tw-Gw
 end
 ```
 
+> code output 
+<img width="516" alt="final" src="https://user-images.githubusercontent.com/12381733/76136841-43060a00-6079-11ea-98b9-f6f7f23375dd.png">
+
 ### 2. Selection of training cells, guard cells, and offset
 
-The values below were hand selected. I chose a rectangular window with the major dimension along the range cells. This produced better filtered results from the given RDM. Choosing the right value for `offset` was key to isolating the simulated target and avoiding false positives. Finally, I precalculated the `N_training` value to avoid a performance hit in the nested loop.
+- Find proper value for Training Cell width/height & Guard Cell width/height & offset
+- Too large offset will even suppress target signal. Too small cell size will allows few noises.
+
+> By several tries, I found those values.
+
 ```
 % size of traning cell
 Tw = 12;
@@ -72,4 +84,6 @@ offset = 10;
 ```
 CFAR = zeros(size(RDM));
 ```
-In my 2D CFAR implementation, only CUT locations with sufficient margins to contain the entire window are considered. I start with an empty array of zeros, equivalent in size to the `RDM` array. I then set the indexed locations to one if and only if the threshold is exceeded by the CUT.
+
+Assigned new Matrix that has the same size of `RDM` array.
+Then I set the indexed position to 1, only if the threshold is exceeded by CUT.
