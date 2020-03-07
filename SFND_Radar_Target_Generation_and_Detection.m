@@ -32,7 +32,7 @@ V_max = 100;
 V_res = 3;
 
 initial_p = 110;
-initial_v = 70;
+initial_v = -20;
 
 B = c / (2 * R_res);
 Tchirp = 5.5 * 2 * R_max / c;
