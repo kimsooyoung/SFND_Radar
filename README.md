@@ -8,7 +8,13 @@ Practice for Handling Radar sensed data, In aspect of self-driving car.
 
 <img width="786" alt="layout" src="https://user-images.githubusercontent.com/12381733/76136852-6f218b00-6079-11ea-8812-a887735af8a5.png">
 
-### Project Review 
+## Dependencies for Running Locally
+*  Matlab & Additional Toolboxes : You'll gonna need few Matlab Toolboxes those are in below.
+
+<img width="491" alt="toolboxes" src="https://user-images.githubusercontent.com/12381733/77243651-e0ebfe00-6c4f-11ea-82ba-b35ca38b9345.png">
+
+
+### Project Overview 
 
 **SFND_Radar_Target_Generation_and_Detection.m**
 
@@ -17,7 +23,6 @@ Practice for Handling Radar sensed data, In aspect of self-driving car.
 - For the same simulation loop process the transmit and receive signal to determine the beat signal
 - Perform Range FFT on the received signal to determine the Range
 - Towards the end, perform the CFAR processing on the output of 2nd FFT to display the target.
-
 
 
 ## Main Workflow
@@ -97,3 +102,9 @@ CFAR = zeros(size(RDM));
 
 Assigned new Matrix that has the same size of `RDM` array.
 Then I set the indexed position to 1, only if the threshold is exceeded by CUT.
+
+---
+
+### Reference
+
+* [Radar Tutorial](https://www.radartutorial.eu/index.en.html)
