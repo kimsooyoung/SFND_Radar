@@ -40,18 +40,23 @@ Calculate the trip time and the Range from Radar to Objects with given factors (
 
 <img width="780" alt="range_equation_2" src="https://user-images.githubusercontent.com/12381733/77243883-6f617f00-6c52-11ea-813a-23ef281fec2a.png">
 
+---
 
 ### Doppler Estimation
 
+---
+
 Calculate the velocity of the targets using Doppler Effect with given factors (doppler frequency shifts, FMCW frequency)
+
+---
 
 ### Fast Fourier Transform Exercise
 
-<img width="672" alt="FFT" src="https://user-images.githubusercontent.com/12381733/77251013-27ad1880-6c8f-11ea-857d-f6c608797d06.png">
+<img width="400" alt="FFT" src="https://user-images.githubusercontent.com/12381733/77251013-27ad1880-6c8f-11ea-857d-f6c608797d06.png">
 
 This project uses a Fourier transform to find the frequency components of a signal buried in noise. 
 
-**Here's few steps for 1st stage FFT **
+#### Here's few steps for 1st stage FFT
 
 1. Define a signal. In this case (amplitude = A, frequency = f)
 
@@ -79,13 +84,15 @@ signal_fft  = signal_fft(1:L/2-1)
 
 5. Plot this output against frequency.
 
+---
+
 ### 2D Fast Fourier Transform Exercise
 
 The output of Range Doppler response represents an image with Range on one axis and Doppler on the other. This image is called as `Range Doppler Map (RDM)` These maps are often used as user interface to understand the perception of the targets.
 
-<img width="672" alt="2D_FFT" src="https://user-images.githubusercontent.com/12381733/77251288-e453a980-6c90-11ea-85bc-05aba71b8078.png">
+<img width="400" alt="2D_FFT" src="https://user-images.githubusercontent.com/12381733/77251288-e453a980-6c90-11ea-85bc-05aba71b8078.png">
 
-**Here's few steps for 2D stage FFT **
+#### Here's few steps for 2D stage FFT
 
 1. Take a 2D signal matrix
 
@@ -117,9 +124,40 @@ imagesc(signal_fft);
 
 ---
 
+#### 1D CFAR Exercise
+
+<img width="400" alt="1D_CFAR" align="left" src="https://user-images.githubusercontent.com/12381733/77251944-c1c38f80-6c94-11ea-94fa-962138c09355.png">
+<img width="400" alt="1D_CFAR2" align="center" src="https://user-images.githubusercontent.com/12381733/77251952-c8520700-6c94-11ea-93d6-ea3877f5d13b.png">
+
+
+Implement 1D CFAR using lagging cells on the given noise and target scenario.
+
+You must first get used to the terms before dig into `CA-CFAR` exercises.
+
+**T** : _Number of Training Cells_
+
+**G** : _Number of Guard Cells_
+
+**N** : _Total number of Cells_
+
+#### And, Here's few steps for CFAR implementation
+
+1. Define the number of training cells and guard cells
+2. Start sliding the window one cell at a time across the complete `FFT 1D` array. Total window size should be: `2(T+G)+CUT`
+3. For each step, sum the signal (noise) within all the leading or lagging training cells
+4. Average the sum to determine the noise threshold
+5. Using an appropriate offset value scale the threshold
+6. Now, measure the signal in the `CUT`, which is `T+G+1` from the window starting point
+7. Compare the signal measured in 5 against the threshold measured in 4
+8. If the level of signal measured in `CUT` is smaller than the threshold measured, then assign 0 value to the signal within `CUT`.
+
+
+---
+
 ### Reference
 
 * [MatWorks - 2D FFT](https://kr.mathworks.com/help/matlab/ref/fft2.html)
+* [MatWorks - Constant False Alarm Rate (CFAR) Detection](https://kr.mathworks.com/help/phased/examples/constant-false-alarm-rate-cfar-detection.html)
 * [Radar Tutorial](https://www.radartutorial.eu/index.en.html)
 * [Udacity Sensor Fusion Nanodegree](https://www.udacity.com/course/sensor-fusion-engineer-nanodegree--nd313)
 
