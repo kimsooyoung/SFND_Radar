@@ -211,6 +211,15 @@ Last project, Implement Clustering Algorithms based on euclidean distance. And t
 
 9. Keep repeating the process until the detection list is empty.
 
+See the function `clusterDetections` in a Matlab Code for more detail.
+
+```matlab
+function detectionClusters = clusterDetections(detections, vehicleSize)
+    N = numel(detections);
+    distances = zeros(N);
+    for i = 1:N
+```
+
 ---
 
 ### Reference
