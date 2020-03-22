@@ -74,7 +74,7 @@ end
 - Find proper value for Training Cell width/height & Guard Cell width/height & offset
 - Too large offset will even suppress target signal. Too small cell size will allows few noises.
 
-> By several tries, I found those values.
+> By several tries, I found those profitable values.
 
 ```
 % size of traning cell
