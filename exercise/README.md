@@ -16,7 +16,9 @@ Those are small exercise implemented before Programming Assignment
 
 ### Project Overview 
 
-#### Radar Range Equation
+---
+
+### Radar Range Equation
 
 Using the Radar Range equation we can design the radar transmitter, receiver, and antenna to have the desired power, gain and noise performance to meet the range requirements.
 
@@ -30,7 +32,7 @@ A target with higher cross section can be detected at a longer range as compared
 
 ---
 
-#### Range Estimation
+### Range Estimation
 
 <img width="806" alt="range_estimation" src="https://user-images.githubusercontent.com/12381733/77243770-25c46480-6c51-11ea-9d5a-4b7322879c07.png">
 
@@ -39,5 +41,45 @@ Calculate the trip time and the Range from Radar to Objects with given factors (
 <img width="780" alt="range_equation_2" src="https://user-images.githubusercontent.com/12381733/77243883-6f617f00-6c52-11ea-813a-23ef281fec2a.png">
 
 
+### Doppler Estimation
 
+Calculate the velocity of the targets using Doppler Effect with given factors (doppler frequency shifts, FMCW frequency)
+
+### Fast Fourier Transform Exercise
+
+<img width="672" alt="FFT" src="https://user-images.githubusercontent.com/12381733/77251013-27ad1880-6c8f-11ea-857d-f6c608797d06.png">
+
+Fast Fourier Transform is used to convert the signal from time domain to frequency domain. Conversion to frequency domain is important to do the spectral analysis of the signal and determine the shifts in frequency due to range and doppler.
+
+This project uses a Fourier transform to find the frequency components of a signal buried in noise. 
+
+Specify the parameters of a signal with a sampling frequency of 1 kHz and a signal duration of 1.5 seconds.
+
+Here's few step of 1st stage FFT 
+
+1. Define a signal. In this case (amplitude = A, frequency = f)
+
+```matlab
+signal = A*cos(2*pi*f*t)
+```
+
+2. Run the fft for the signal using MATLAB fft function for dimension of samples N.
+
+```matlab
+signal_fft = fft(signal,N);
+```
+
+3. The output of FFT processing of a signal is a complex number `(a+jb)`. Since, we just care about the magnitude we take the absolute value `(sqrt(a^2+b^2))` of the complex number.
+
+```matlab
+signal_fft = abs(signal_fft);
+```
+
+4. FFT output generates a mirror image of the signal. But we are only interested in the positive half of signal length L, since it is the replica of negative half and has all the information we need.
+
+```matlab
+signal_fft  = signal_fft(1:L/2-1)       
+```
+
+5. Plot this output against frequency.
 
