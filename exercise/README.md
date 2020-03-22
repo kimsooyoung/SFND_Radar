@@ -124,7 +124,7 @@ imagesc(signal_fft);
 
 ---
 
-#### 1D CFAR Exercise
+### 1D CFAR Exercise
 
 <img width="400" alt="1D_CFAR" align="left" src="https://user-images.githubusercontent.com/12381733/77251944-c1c38f80-6c94-11ea-94fa-962138c09355.png">
 <img width="400" alt="1D_CFAR2" align="center" src="https://user-images.githubusercontent.com/12381733/77251952-c8520700-6c94-11ea-93d6-ea3877f5d13b.png">
@@ -150,6 +150,34 @@ You must first get used to the terms before dig into `CA-CFAR` exercises.
 6. Now, measure the signal in the `CUT`, which is `T+G+1` from the window starting point
 7. Compare the signal measured in 5 against the threshold measured in 4
 8. If the level of signal measured in `CUT` is smaller than the threshold measured, then assign 0 value to the signal within `CUT`.
+
+---
+
+### 2D CFAR Exercise
+
+<img width="765" alt="2D_CFAR" src="https://user-images.githubusercontent.com/12381733/77252294-34813a80-6c96-11ea-9cc2-9824f7c1b4c3.png">
+
+The following steps can be used to implement `2D-CFAR` in `MATLAB`
+
+1. Determine the number of Training cells for each dimension Tr and Td. Similarly, pick the number of guard cells `Gr` and `Gd`.
+
+2. Slide the Cell Under Test (CUT) across the complete cell matrix
+
+3. Select the grid that includes the training, guard and test cells. `Grid Size = (2Tr+2Gr+1)(2Td+2Gd+1).`
+
+4. The total number of cells in the guard region and cell under test. `(2Gr+1)(2Gd+1).`
+
+5. This gives the Training Cells : `(2Tr+2Gr+1)(2Td+2Gd+1) - (2Gr+1)(2Gd+1)`
+
+6. Measure and average the noise across all the training cells. This gives the threshold
+
+7. Add the offset (if in signal strength in `dB`) to the threshold to keep the false alarm to the minimum.
+
+8. Determine the signal level at the Cell Under Test.
+
+9. If the `CUT` signal level is greater than the Threshold, assign a value of 1, else equate it to zero.
+
+10. Since the cell under test are not located at the edges, due to the training cells occupying the edges, we suppress the edges to zero. Any cell value that is neither 1 nor a 0, assign it a zero.
 
 
 ---
