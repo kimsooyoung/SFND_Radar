@@ -179,8 +179,38 @@ The following steps can be used to implement `2D-CFAR` in `MATLAB`
 
 10. Since the cell under test are not located at the edges, due to the training cells occupying the edges, we suppress the edges to zero. Any cell value that is neither 1 nor a 0, assign it a zero.
 
-
 ---
+
+### Clustering Implementation with Matlab Simulation
+
+<img width="1312" alt="스크린샷 2020-03-23 오전 12 10 50" src="https://user-images.githubusercontent.com/12381733/77253400-50d4a580-6c9d-11ea-99c9-40ffc10e4d51.png">
+
+Last project, Implement Clustering Algorithms based on euclidean distance. And then, track those clusters as cars moving back and forward.
+
+####  The clustering implementation uses the following steps. 
+
+1. If the detections are from same sensor, then loop through every single detection point and measure the euclidean distance between all of them.
+
+2. Keep running the loop until the detection list is empty
+
+> _Implement the following within the while loop_
+
+3. Pick the first detection in the check list and check for its clustering neighbors.
+
+4. If the distance between the first pick and remaining detections is less than the vehicle size, then group those detections and their respective radar sensor measurements, including range and velocity.
+
+5. For the group, take the mean of the range and velocity measurements.
+
+> Note: the radar measurement vector has 6 values - where range and velocity for x and y coordinates reside at indices 1,2, 4, and 5: [x, y, - , Vx, Vy, -]
+
+6. Create a new Cluster ID. Then, assign all the group detections to the same ID.
+
+7. Further, assign cluster, the mean range and velocity.
+
+8. In the end, delete from the list the detections which have already been assigned to a cluster.
+
+9. Keep repeating the process until the detection list is empty.
+
 
 ### Reference
 
