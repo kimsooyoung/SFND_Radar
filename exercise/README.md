@@ -1,3 +1,5 @@
+html header: <script type="text/javascript"  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 # Sensor Fusion Self-Driving Car Course - Radar Exercises
 
 Those are small exercise implemented before Programming Assignment
@@ -38,4 +40,3 @@ The FMCW waveform has the characteristic that the frequency varies linearly with
 
 It is important to understand that if a target is stationary then a transmitted frequency and received frequency are the same. But, the ramping frequency within the hardware is continuously changing with time. So, when we take the delta (beat frequency) between the received and ramping frequency we get the trip time.
 
-$$R = {-b \pm \sqrt{b^2-4ac} \over 2B_sweep}$$
