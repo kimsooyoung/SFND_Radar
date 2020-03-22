@@ -211,6 +211,7 @@ Last project, Implement Clustering Algorithms based on euclidean distance. And t
 
 9. Keep repeating the process until the detection list is empty.
 
+---
 
 ### Reference
 
