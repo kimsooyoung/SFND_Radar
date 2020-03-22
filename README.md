@@ -1,6 +1,16 @@
-# SFND_Radar - Radar Target Generation and Detection
+# Sensor Fusion Self-Driving Car Course - Radar Target Generation and Detection
 
-## Project layout - SFND_Radar_Target_Generation_and_Detection.m
+Practice for Handling Radar sensed data, In aspect of self-driving car.
+
+### Project Status:
+
+![issue_badge](https://img.shields.io/badge/build-Passing-green) ![issue_badge](https://img.shields.io/badge/UdacityRubric-Passing-green)
+
+<img width="786" alt="layout" src="https://user-images.githubusercontent.com/12381733/76136852-6f218b00-6079-11ea-8812-a887735af8a5.png">
+
+### Project Review 
+
+**SFND_Radar_Target_Generation_and_Detection.m**
 
 - Configure the FMCW waveform based on the system requirements.
 - Define the range and velocity of target and simulate its displacement.
@@ -8,9 +18,9 @@
 - Perform Range FFT on the received signal to determine the Range
 - Towards the end, perform the CFAR processing on the output of 2nd FFT to display the target.
 
-<img width="786" alt="layout" src="https://user-images.githubusercontent.com/12381733/76136852-6f218b00-6079-11ea-8812-a887735af8a5.png">
 
-## Project Review
+
+## Main Workflow
 
 ### 1. Implementation steps for the 2D CFAR process
 
