@@ -27,3 +27,15 @@ A target with higher cross section can be detected at a longer range as compared
 <img width="810" alt="radar_equation" src="https://user-images.githubusercontent.com/12381733/77243730-8acb8a80-6c50-11ea-93ab-8157f4a56f20.png">
 
 #### 
+
+---
+
+#### Range Estimation
+
+<img width="806" alt="range_estimation" src="https://user-images.githubusercontent.com/12381733/77243770-25c46480-6c51-11ea-9d5a-4b7322879c07.png">
+
+The FMCW waveform has the characteristic that the frequency varies linearly with time. If radar can determine the delta between the received frequency and hardware’s continuously ramping frequency then it can calculate the trip time and hence the range. We further divide Range estimate by 2, since the frequency delta corresponds to two way trip.
+
+It is important to understand that if a target is stationary then a transmitted frequency and received frequency are the same. But, the ramping frequency within the hardware is continuously changing with time. So, when we take the delta (beat frequency) between the received and ramping frequency we get the trip time.
+
+$$R = {-b \pm \sqrt{b^2-4ac} \over 2B_sweep}$$
