@@ -36,6 +36,7 @@ A target with higher cross section can be detected at a longer range as compared
 
 Calculate the trip time and the Range from Radar to Objects with given factors (FMCW waveform factor, Beat Frequency, Radar maximum range, Radar Range resolution)
 
+<img width="780" alt="range_equation_2" src="https://user-images.githubusercontent.com/12381733/77243883-6f617f00-6c52-11ea-813a-23ef281fec2a.png">
 
 
 
