@@ -109,3 +109,4 @@ Then I set the indexed position to 1, only if the threshold is exceeded by CUT.
 ### Reference
 
 * [Radar Tutorial](https://www.radartutorial.eu/index.en.html)
+* [Udacity Sensor Fusion Nanodegree](https://www.udacity.com/course/sensor-fusion-engineer-nanodegree--nd313)
