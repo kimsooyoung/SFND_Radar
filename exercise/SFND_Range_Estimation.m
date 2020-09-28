@@ -26,5 +26,5 @@ calculated_range = c * C_t * freqs / ( 2 * Bsweep );
 
 
 % Display the calculated range
-% 단위는 미터
+% Unit: meter(m)
 disp(calculated_range);

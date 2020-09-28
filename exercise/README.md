@@ -2,37 +2,45 @@
 
 Those are small exercise implemented before Programming Assignment
 
+---
+
 ### Project Status:
 
-![issue_badge](https://img.shields.io/badge/build-Passing-green) ![issue_badge](https://img.shields.io/badge/UdacityRubric-Passing-green)
-
+![issue_badge](https://img.shields.io/badge/UdacityRubric-Passing-green)
 
 ## Dependencies for Running Locally
-*  Matlab & Additional Toolboxes : You'll gonna need few Matlab Toolboxes those are in below.
+
+- Matlab & Additional Toolboxes : You'll gonna need few Matlab Toolboxes those are in below.
 
 <img width="491" alt="toolboxes" src="https://user-images.githubusercontent.com/12381733/77243651-e0ebfe00-6c4f-11ea-82ba-b35ca38b9345.png">
 
 ---
 
-### Project Overview 
+## Project Overview
+
+Learn about basic Radar technics through matlab.
 
 ---
 
 ### Radar Range Equation
 
+- example code : `SFND_Radar_Range_Equation.m`
+
 Using the Radar Range equation we can design the radar transmitter, receiver, and antenna to have the desired power, gain and noise performance to meet the range requirements.
 
-A long range radar designed to cover 300m range and detect a target with smaller cross section would need higher transmit power and more antenna gain as compared to a short range radar designed to cover just 50m for similar target. 
+A long range radar designed to cover 300m range and detect a target with smaller cross section would need higher transmit power and more antenna gain as compared to a short range radar designed to cover just 50m for similar target.
 
 A target with higher cross section can be detected at a longer range as compared to a target with smaller cross section.
 
 <img width="810" alt="radar_equation" src="https://user-images.githubusercontent.com/12381733/77243730-8acb8a80-6c50-11ea-93ab-8157f4a56f20.png">
 
-#### 
+####
 
 ---
 
 ### Range Estimation
+
+- example code : `SFND_Range_Estimation.m`
 
 <img width="806" alt="range_estimation" src="https://user-images.githubusercontent.com/12381733/77243770-25c46480-6c51-11ea-9d5a-4b7322879c07.png">
 
@@ -44,17 +52,25 @@ Calculate the trip time and the Range from Radar to Objects with given factors (
 
 ### Doppler Estimation
 
----
+- example code : `SFND_Range_Estimation.m`
+
+By measuring the shift in the frequency due to doppler, radar can determine the velocity. The receding target will have a negative velocity due to the frequency dropping lower, whereas the approaching target will have positive velocity as the frequency shifts higher.
+
+<img width="784" alt="스크린샷 2020-09-28 오후 3 41 20" src="https://user-images.githubusercontent.com/12381733/94398742-16464b00-01a1-11eb-8312-059b498d92f0.png">
 
 Calculate the velocity of the targets using Doppler Effect with given factors (doppler frequency shifts, FMCW frequency)
+
+<img width="763" alt="스크린샷 2020-09-28 오후 3 42 14" src="https://user-images.githubusercontent.com/12381733/94398802-32e28300-01a1-11eb-9684-15cc02d371ad.png">
 
 ---
 
 ### Fast Fourier Transform Exercise
 
+- example code : `SFND_FFT.m`
+
 <img width="400" alt="FFT" src="https://user-images.githubusercontent.com/12381733/77251013-27ad1880-6c8f-11ea-857d-f6c608797d06.png">
 
-This project uses a Fourier transform to find the frequency components of a signal buried in noise. 
+This project uses a Fourier transform to find the frequency components of a signal buried in noise.
 
 #### Here's few steps for 1st stage FFT
 
@@ -79,7 +95,7 @@ signal_fft = abs(signal_fft);
 4. FFT output generates a mirror image of the signal. But we are only interested in the positive half of signal length L, since it is the replica of negative half and has all the information we need.
 
 ```matlab
-signal_fft  = signal_fft(1:L/2-1)       
+signal_fft  = signal_fft(1:L/2-1)
 ```
 
 5. Plot this output against frequency.
@@ -103,21 +119,25 @@ signal  = reshape(signal, [M, N]);
 ```
 
 3. Run the 2D FFT across both the dimensions.
+
 ```matlab
 signal_fft = fft2(signal, M, N);
 ```
 
 4. Shift zero-frequency terms to the center of the array
+
 ```matlab
 signal_fft = fftshift(signal_fft);
 ```
 
 5. Take the absolute value
+
 ```matlab
 signal_fft = abs(signal_fft);
 ```
 
 6. Here since it is a 2D output, it can be plotted as an image. Hence, we use the imagesc function
+
 ```matlab
 imagesc(signal_fft);
 ```
@@ -128,7 +148,6 @@ imagesc(signal_fft);
 
 <img width="400" alt="1D_CFAR" align="left" src="https://user-images.githubusercontent.com/12381733/77251944-c1c38f80-6c94-11ea-94fa-962138c09355.png">
 <img width="400" alt="1D_CFAR2" align="center" src="https://user-images.githubusercontent.com/12381733/77251952-c8520700-6c94-11ea-93d6-ea3877f5d13b.png">
-
 
 Implement 1D CFAR using lagging cells on the given noise and target scenario.
 
@@ -187,7 +206,7 @@ The following steps can be used to implement `2D-CFAR` in `MATLAB`
 
 Last project, Implement Clustering Algorithms based on euclidean distance. And then, track those clusters as cars moving back and forward.
 
-####  The clustering implementation uses the following steps. 
+#### The clustering implementation uses the following steps.
 
 1. If the detections are from same sensor, then loop through every single detection point and measure the euclidean distance between all of them.
 
@@ -224,8 +243,7 @@ function detectionClusters = clusterDetections(detections, vehicleSize)
 
 ### Reference
 
-* [MatWorks - 2D FFT](https://kr.mathworks.com/help/matlab/ref/fft2.html)
-* [MatWorks - Constant False Alarm Rate (CFAR) Detection](https://kr.mathworks.com/help/phased/examples/constant-false-alarm-rate-cfar-detection.html)
-* [Radar Tutorial](https://www.radartutorial.eu/index.en.html)
-* [Udacity Sensor Fusion Nanodegree](https://www.udacity.com/course/sensor-fusion-engineer-nanodegree--nd313)
-
+- [MatWorks - 2D FFT](https://kr.mathworks.com/help/matlab/ref/fft2.html)
+- [MatWorks - Constant False Alarm Rate (CFAR) Detection](https://kr.mathworks.com/help/phased/examples/constant-false-alarm-rate-cfar-detection.html)
+- [Radar Tutorial](https://www.radartutorial.eu/index.en.html)
+- [Udacity Sensor Fusion Nanodegree](https://www.udacity.com/course/sensor-fusion-engineer-nanodegree--nd313)
